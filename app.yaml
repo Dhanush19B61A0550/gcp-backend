@@ -1,0 +1,7 @@
+runtime: java17
+instance_class: F1
+entrypoint: java -jar target/ems-backend-0.0.1-SNAPSHOT.jar
+
+handlers:
+  - url: /.*  # This should match all URLs
+    script: auto  # Auto routing for all requests
