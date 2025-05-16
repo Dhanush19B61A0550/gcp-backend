@@ -1,7 +1,10 @@
-runtime: java17
-instance_class: F1
+runtime: java
+env: flex
 entrypoint: java -jar target/ems-backend-0.0.1-SNAPSHOT.jar
 
-handlers:
-  - url: /.*  # This should match all URLs
-    script: auto  # Auto routing for all requests
+resources:
+  memory_gb: 1
+  cpu: 1
+
+automatic_scaling:
+  max_num_instances: 1
