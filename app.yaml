@@ -1,6 +1,5 @@
-runtime: java
+runtime: custom
 env: flex
-entrypoint: java -jar target/ems-backend-0.0.1-SNAPSHOT.jar
 
 resources:
   cpu: 1
