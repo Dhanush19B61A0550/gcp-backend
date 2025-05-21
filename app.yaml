@@ -1,5 +1,5 @@
-runtime: custom
-env: flex
+runtime: custom  # For Java custom runtime
+env: flex        # Flexible environment
 
 resources:
   cpu: 1
@@ -9,3 +9,12 @@ resources:
 automatic_scaling:
   min_num_instances: 1
   max_num_instances: 2
+
+readiness_check:
+  path: "/readiness_check"   # Ensure this path is implemented in your app
+  check_interval_sec: 5      # Frequency of health checks
+  timeout_sec: 4             # Max time to wait for a response
+  failure_threshold: 3       # Fail after 3 failed checks
+  success_threshold: 2       # Pass after 2 successful checks
+  app_start_timeout_sec: 300 # Wait up to 5 mins for startup before giving up
+
