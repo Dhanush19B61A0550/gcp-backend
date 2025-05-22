@@ -1,5 +1,5 @@
 runtime: java17
-env: standard
+env: flex
 
 entrypoint: java -Dserver.port=8080 -jar ems-backend-0.0.1-SNAPSHOT.jar
 
