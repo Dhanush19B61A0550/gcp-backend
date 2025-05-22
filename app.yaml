@@ -1,5 +1,7 @@
-runtime: custom
+runtime: java
 env: flex
+
+entrypoint: java -Dserver.port=8085 -jar ems-backend-0.0.1-SNAPSHOT.jar
 
 resources:
   cpu: 1
@@ -14,7 +16,7 @@ automatic_scaling:
     target_utilization: 0.6
 
 readiness_check:
-  path: "/"  # Use a working endpoint for readiness check
+  path: "/"  # Make sure this path returns 200 OK when ready
   check_interval_sec: 5
   timeout_sec: 4
   failure_threshold: 3
@@ -22,17 +24,13 @@ readiness_check:
   app_start_timeout_sec: 600
 
 liveness_check:
-  path: "/health"
+  path: "/health"  # Ensure this endpoint exists and returns 200 OK
   check_interval_sec: 10
   timeout_sec: 4
   failure_threshold: 5
   success_threshold: 2
   initial_delay_sec: 300
 
-# Use a custom port
-network:
-  forwarded_ports:
-    - 8085
 
 
 
