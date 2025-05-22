@@ -1,7 +1,7 @@
-runtime: java21
-env: flex
+runtime: java17
+env: standard
 
-entrypoint: java -Dserver.port=8085 -jar ems-backend-0.0.1-SNAPSHOT.jar
+entrypoint: java -Dserver.port=8080 -jar ems-backend-0.0.1-SNAPSHOT.jar
 
 resources:
   cpu: 1
@@ -16,7 +16,7 @@ automatic_scaling:
     target_utilization: 0.6
 
 readiness_check:
-  path: "/"  # Make sure this path returns 200 OK when ready
+  path: "/"
   check_interval_sec: 5
   timeout_sec: 4
   failure_threshold: 3
@@ -24,12 +24,15 @@ readiness_check:
   app_start_timeout_sec: 600
 
 liveness_check:
-  path: "/health"  # Ensure this endpoint exists and returns 200 OK
+  path: "/health"
   check_interval_sec: 10
   timeout_sec: 4
   failure_threshold: 5
   success_threshold: 2
   initial_delay_sec: 300
+
+
+
 
 
 
