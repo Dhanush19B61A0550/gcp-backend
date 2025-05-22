@@ -9,6 +9,9 @@ resources:
 automatic_scaling:
   min_num_instances: 1
   max_num_instances: 2
+  cool_down_period_sec: 60
+  cpu_utilization:
+    target_utilization: 0.6
 
 readiness_check:
   path: "/readiness_check"
@@ -18,6 +21,19 @@ readiness_check:
   success_threshold: 2
   app_start_timeout_sec: 300
 
-service_account: jenkins-deployer@java-backend-460409.iam.gserviceaccount.com
+liveness_check:
+  path: "/health"
+  check_interval_sec: 10
+  timeout_sec: 4
+  failure_threshold: 5
+  success_threshold: 2
+  initial_delay_sec: 300
+
+# Optional: enable VPC access if using Cloud SQL with private IP
+# network:
+#   name: default
+#   session_affinity: false
+
+
 
 
