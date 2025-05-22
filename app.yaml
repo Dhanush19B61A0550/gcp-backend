@@ -14,12 +14,12 @@ automatic_scaling:
     target_utilization: 0.6
 
 readiness_check:
-  path: "/"  # Temporarily use "/" if /readiness_check is not accessible early
+  path: "/"  # Use a working endpoint for readiness check
   check_interval_sec: 5
   timeout_sec: 4
   failure_threshold: 3
   success_threshold: 2
-  app_start_timeout_sec: 600  # Increased timeout for Java app to start
+  app_start_timeout_sec: 600
 
 liveness_check:
   path: "/health"
@@ -29,10 +29,11 @@ liveness_check:
   success_threshold: 2
   initial_delay_sec: 300
 
-# Optional: enable VPC access if using Cloud SQL with private IP
-# network:
-#   name: default
-#   session_affinity: false
+# Use a custom port
+network:
+  forwarded_ports:
+    - 8085
+
 
 
 
