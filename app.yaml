@@ -14,12 +14,12 @@ automatic_scaling:
     target_utilization: 0.6
 
 readiness_check:
-  path: "/readiness_check"
+  path: "/"  # Temporarily use "/" if /readiness_check is not accessible early
   check_interval_sec: 5
   timeout_sec: 4
   failure_threshold: 3
   success_threshold: 2
-  app_start_timeout_sec: 300
+  app_start_timeout_sec: 600  # Increased timeout for Java app to start
 
 liveness_check:
   path: "/health"
@@ -33,6 +33,7 @@ liveness_check:
 # network:
 #   name: default
 #   session_affinity: false
+
 
 
 
