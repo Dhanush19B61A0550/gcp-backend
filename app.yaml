@@ -1,7 +1,7 @@
 runtime: custom
 env: flex
 
-entrypoint: java -Dserver.port=8080 -jar ems-backend-0.0.1-SNAPSHOT.jar
+entrypoint: java -Dserver.port=$PORT -jar ems-backend-0.0.1-SNAPSHOT.jar
 
 resources:
   cpu: 1
@@ -30,6 +30,8 @@ liveness_check:
   failure_threshold: 5
   success_threshold: 2
   initial_delay_sec: 300
+
+
 
 
 
