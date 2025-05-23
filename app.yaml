@@ -1,6 +1,9 @@
 runtime: custom
 env: flex
 
+beta_settings:
+  cloud_sql_instances: react-frontend-460609:us-central1:my-sql-db
+
 entrypoint: java -Dserver.port=$PORT -jar ems-backend-0.0.1-SNAPSHOT.jar
 
 resources:
@@ -30,8 +33,6 @@ liveness_check:
   failure_threshold: 5
   success_threshold: 2
   initial_delay_sec: 300
-
-
 
 
 
